@@ -26,7 +26,7 @@ def evaluate_models(x_train, y_train, x_test, y_test, models):
 
         for i in range(len(list(models))):
             model = list(models.values())[i]
-    
+             
             model.fit(x_train, y_train)
 
             y_train_pred = model.predict(x_train)
@@ -44,3 +44,9 @@ def evaluate_models(x_train, y_train, x_test, y_test, models):
     except Exception as e:
         raise CustomException(e,sys)
     
+def load_object(file_path):
+    try:
+        with open(file_path, 'rb') as file_obj:
+            return dill.load(file_obj)
+    except Exception as e:
+        raise CustomException(e, sys)
